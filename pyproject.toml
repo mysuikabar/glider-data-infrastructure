@@ -1,0 +1,28 @@
+[tool.poetry]
+name = "glider-data-infrastructure"
+version = "0.1.0"
+description = "A data infrastructure for analyzing glider flight log data"
+authors = ["suikabar <mizuho.suikabar@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+pandas = "^2.2.2"
+pyarrow = "^16.0.0"
+beautifulsoup4 = "^4.12.3"
+dbt-bigquery = "^1.7.8"
+prefect = "^2.18.3"
+google-cloud-storage = "^2.16.0"
+google-cloud-bigquery = "^3.22.0"
+functions-framework = "^3.5.0"
+igc-processor = "^0.1.1"
+
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.2.0"
+sqlfluff = "^3.0.6"
+sqlfluff-templater-dbt = "^3.0.6"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
