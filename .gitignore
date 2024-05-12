@@ -1,1 +1,6 @@
 *.pyc
+*.zip
+
+.terraform*
+*.tfstate*
+*.tfvars
