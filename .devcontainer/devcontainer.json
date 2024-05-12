@@ -13,6 +13,7 @@
                 "ms-python.mypy-type-checker",
                 "ms-azuretools.vscode-docker",
                 "charliermarsh.ruff",
+                "dorzey.vscode-sqlfluff",
                 "mhutchie.git-graph",
                 "gruntfuggly.todo-tree"
             ]
