@@ -7,8 +7,19 @@ variable "region" {
   default = "asia-northeast1"
 }
 
-variable "bucket_name_igc" {
-  type = string
+variable "source_bucket_prefix" {
+  type    = string
+  default = "igc_files"
+}
+
+variable "function_bucket_prefix" {
+  type    = string
+  default = "igc_file_processor"
+}
+
+variable "function_name" {
+  type    = string
+  default = "igc_file_processor"
 }
 
 variable "dataset_id" {

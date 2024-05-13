@@ -3,13 +3,20 @@ variable "location" {
   default = "asia-northeast1"
 }
 
-variable "bucket_name_igc" {
+variable "source_bucket_prefix" {
+  type = string
+}
+
+variable "function_bucket_prefix" {
   type = string
 }
 
 variable "function_name" {
-  type    = string
-  default = "igc_file_processor"
+  type = string
+}
+
+variable "function_available_memory_mb" {
+  type = number
 }
 
 variable "dataset_id" {

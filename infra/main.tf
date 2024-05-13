@@ -12,14 +12,18 @@ provider "google" {
   region  = var.region
 }
 
-module "functions" {
-  source          = "./modules/cloud_functions"
-  bucket_name_igc = var.bucket_name_igc
-  dataset_id      = var.dataset_id
-  table_id        = var.table_id
-}
-
 module "bigquery" {
   source     = "./modules/bigquery"
   dataset_id = var.dataset_id
 }
+
+module "storage_triggered_function" {
+  source                       = "./modules/storage_triggered_function"
+  source_bucket_prefix         = var.source_bucket_prefix
+  function_bucket_prefix       = var.function_bucket_prefix
+  function_name                = var.function_name
+  function_available_memory_mb = 256
+  dataset_id                   = var.dataset_id
+  table_id                     = var.table_id
+}
+
