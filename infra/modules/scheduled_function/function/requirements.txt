@@ -1,0 +1,6 @@
+beautifulsoup4==4.12.3
+functions_framework==3.5.0
+google-cloud-bigquery==3.22.0
+pandas==2.2.2
+pandera==0.19.2
+pyarrow==16.0.0

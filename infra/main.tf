@@ -14,16 +14,27 @@ provider "google" {
 
 module "bigquery" {
   source     = "./modules/bigquery"
-  dataset_id = var.dataset_id
+  dataset_id = "data_lake"
 }
 
-module "storage_triggered_function" {
+module "igc_file_processor" {
   source                       = "./modules/storage_triggered_function"
-  source_bucket_prefix         = var.source_bucket_prefix
-  function_bucket_prefix       = var.function_bucket_prefix
-  function_name                = var.function_name
+  source_bucket_prefix         = "igc_files"
+  function_bucket_prefix       = "igc_file_processor"
+  function_name                = "igc_file_processor"
   function_available_memory_mb = 256
-  dataset_id                   = var.dataset_id
-  table_id                     = var.table_id
+  dataset_id                   = "data_lake"
+  table_id                     = "flight_log"
 }
 
+module "amedas_scraper" {
+  source                       = "./modules/scheduled_function"
+  function_bucket_prefix       = "amedas_scraper"
+  function_name                = "amedas_scraper"
+  function_available_memory_mb = 256
+  dataset_id                   = "data_lake"
+  table_id                     = "amedas"
+  scheduler_name               = "amedas_scraper"
+  scheduler_schedule           = "0 3 * * *"
+  scheduler_time_zone          = "Asia/Tokyo"
+}
