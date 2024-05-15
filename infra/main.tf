@@ -32,7 +32,7 @@ module "amedas_scraper" {
   source                       = "./modules/scheduled_function"
   function_bucket_prefix       = "amedas_scraper"
   function_name                = "amedas_scraper"
-  function_available_memory_mb = 256
+  function_available_memory_mb = 512
   dataset_id                   = "data_lake"
   table_id                     = "amedas"
   scheduler_name               = "amedas_scraper"
