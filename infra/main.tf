@@ -28,6 +28,7 @@ module "igc_file_processor" {
 }
 
 module "amedas_scraper" {
+  project_id                   = var.project_id
   source                       = "./modules/scheduled_function"
   function_bucket_prefix       = "amedas_scraper"
   function_name                = "amedas_scraper"

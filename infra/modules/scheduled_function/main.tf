@@ -34,6 +34,16 @@ resource "google_cloudfunctions_function" "function" {
   }
 }
 
+resource "google_service_account" "scheduler_service_account" {
+  account_id = "scheduler-sa"
+}
+
+resource "google_project_iam_member" "scheduler_invoker" {
+  project = var.project_id
+  role    = "roles/cloudfunctions.invoker"
+  member  = "serviceAccount:${google_service_account.scheduler_service_account.email}"
+}
+
 resource "google_cloud_scheduler_job" "scheduler_job" {
   name      = var.scheduler_name
   schedule  = var.scheduler_schedule
@@ -42,5 +52,8 @@ resource "google_cloud_scheduler_job" "scheduler_job" {
   http_target {
     uri         = google_cloudfunctions_function.function.https_trigger_url
     http_method = "GET"
+    oidc_token {
+      service_account_email = google_service_account.scheduler_service_account.email
+    }
   }
 }

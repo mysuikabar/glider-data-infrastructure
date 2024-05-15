@@ -2,10 +2,10 @@ import datetime
 import os
 from typing import Optional
 
+import flask
 import functions_framework
 import pandas as pd
 from amedas_scraper.scraper import get_amedas_data
-from cloudevents.http import CloudEvent
 from google.cloud import bigquery
 
 # point code
@@ -32,8 +32,8 @@ def output_to_bq(
     return
 
 
-@functions_framework.cloud_event
-def main(cloud_event: CloudEvent) -> None:
+@functions_framework.http
+def main(request: flask.Request) -> str:
     project = os.getenv("PROJECT")
     dataset_id = os.environ["DATASET_ID"]
     table_id = os.environ["TABLE_ID"]
@@ -41,3 +41,5 @@ def main(cloud_event: CloudEvent) -> None:
     date = datetime.date.today() - datetime.timedelta(days=2)
     df = get_amedas_data(prec_no=PREC_NO, block_no=BLOCK_NO, date=date)
     output_to_bq(df, dataset_id=dataset_id, table_id=table_id, project=project)
+
+    return "Success"
