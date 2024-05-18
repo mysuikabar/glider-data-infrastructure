@@ -1,4 +1,4 @@
-name: run_dbt
+name: run dbt
 
 on:
   schedule:
@@ -15,5 +15,7 @@ jobs:
         with:
           python-version: "3.12"
       - run: pip install dbt-bigquery
+      - run: echo ${{ secrets.GCP_CREDENTIALS }} > secrets/gcloud.json
       - run: dbt run
-        working-directory: ./dbt/flight_log/
+        working-directory: dbt/flight_log/
+      - run: rm secrets/gcloud.json

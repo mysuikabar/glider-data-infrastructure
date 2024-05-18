@@ -1,4 +1,5 @@
 .env
+gcloud.json
 
 *.pyc
 *.zip
