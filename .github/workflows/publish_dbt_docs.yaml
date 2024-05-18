@@ -15,7 +15,7 @@ jobs:
         with:
           python-version: "3.12"
       - run: pip install dbt-bigquery
-      - run: echo "${{ secrets.GCP_CREDENTIALS }}" > secrets/gcloud.json 
+      - run: echo '${{ secrets.GCP_CREDENTIALS }}' > secrets/gcloud.json 
       - run: dbt docs generate
         working-directory: dbt/flight_log/
         env:
