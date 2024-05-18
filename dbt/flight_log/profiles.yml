@@ -1,0 +1,14 @@
+flight_log:
+  target: dev
+  outputs:
+    dev:
+      type: bigquery
+      method: service-account
+      project: "{{ env_var('GCP_PROJECT_ID') }}"
+      location: US
+      dataset: data_warehouse
+      priority: interactive
+      job_execution_timeout_seconds: 600
+      job_retries: 1
+      threads: 1
+      keyfile: ../../secrets/gcloud.json

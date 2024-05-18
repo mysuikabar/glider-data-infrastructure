@@ -1,0 +1,9 @@
+.env
+gcloud.json
+
+*.pyc
+*.zip
+
+.terraform*
+*.tfstate*
+*.tfvars

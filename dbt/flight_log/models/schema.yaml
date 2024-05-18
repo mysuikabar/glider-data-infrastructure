@@ -1,0 +1,15 @@
+version: 2
+
+sources:
+  - name: data_lake
+    tables:
+      - name: flight_log
+        description: Raw flight logs converted from IGC files
+      - name: amedas
+        description: Raw weather data recorded by AMeDAS in 10-minute intervals
+
+models:
+  - name: flight_log
+    description: Flight logs aggregated minutely
+  - name: flight_log_with_weather_info
+    description: Flight logs with weather information aggregated minutely
