@@ -16,7 +16,8 @@
                 "charliermarsh.ruff",
                 "dorzey.vscode-sqlfluff",
                 "mhutchie.git-graph",
-                "gruntfuggly.todo-tree"
+                "gruntfuggly.todo-tree",
+                "hediet.vscode-drawio"
             ]
         }
     },
