@@ -24,6 +24,6 @@ extended_capitalisation_policy = lower
 
 [sqlfluff:templater:dbt]
 project_dir = ./dbt/flight_log/
-profiles_dir = ~/.dbt/
+profiles_dir = ./dbt/flight_log/
 profile = flight_log
 target = dev
